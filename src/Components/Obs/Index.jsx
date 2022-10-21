@@ -1,0 +1,156 @@
+import React, {useState} from 'react'
+import * as S from './Style'
+import Modal from 'react-modal'
+import Onu from '../../Assets/Obs/onu-logo.png'
+import Health from '../../Assets/Obs/health.png'
+import Education from '../../Assets/Obs/education.png'
+import Equality from '../../Assets/Obs/equality.png'
+import Growth from '../../Assets/Obs/growth.png'
+import HealthComponent from '../Obs/Health/Index'
+import EducationComponent from '../Obs/Education/Index'
+import EqualityComponent from '../Obs/Equality/Index'
+import GrowthComponent from '../Obs/Growth/Index'
+import Header from '../../Services/Header/Index'
+import Footer from '../../Services/Footer/Index'
+
+export default function OBS(){
+    
+    const [pagehealth, setPagehealth] = useState(false)
+    const [pageeducation, setPageeducation] = useState(false)
+    const [pageequality, setPageequality] = useState(false)
+    const [pagegrowth, setPagegrowth] = useState(false)
+    const [pagejustice, setPagejustice] = useState(false)
+
+
+    function ChangeHealth(){
+        setPagehealth(!pagehealth)
+    }
+
+    function ChangeEducation(){
+        setPageeducation(!pageeducation)
+    }
+
+    function ChangeEquality(){
+        setPageequality(!pageequality)
+    }
+
+    function ChangeGrowth(){
+        setPagegrowth(!pagegrowth)
+    }
+
+    function ChangeJustice(){
+        setPagejustice(!pagejustice)
+    }
+
+    return( 
+        <S.ContainerObs>
+            <Header />
+            <S.All> 
+                <S.Logo src={Onu} alt='Onu'/>
+                <S.H1>Os Objetivos de Desenvolvimento Sustentável em Natal - RN</S.H1>
+                <S.P>Uma iniciativa que nasce da necessidade de engajar e conscientizar atores-chave da sociedade a respeito de seu papel e dos esforços necessários para que o cumprimento da Agenda 2030 no Rio Grande do Norte seja bem-sucedido.</S.P>
+                <S.Mural>
+                    
+                    
+                    <S.Img onClick ={()=>{ChangeEquality()}} src={Equality} alt='Igualdade'/>
+                    <Modal 
+                        isOpen={pageequality} 
+                        onRequestClose={ChangeEquality}
+                        style={{
+                            overlay:{
+                                backgroundColor: 'rgba(255, 255, 255, 0)',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                margin: '0 auto'
+                            },
+                            content:{
+                                backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                                borderRadius: '20px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                border: 'none'
+                            }
+                        }}
+                    >
+                        <EqualityComponent Close={ChangeEquality} />
+                    </Modal>
+                    <S.Img onClick={() => {ChangeEducation()}} src={Education} alt='Educação'/>
+                    <Modal 
+                        isOpen={pageeducation} 
+                        onRequestClose={ChangeEducation}
+                        style={{
+                            overlay:{
+                                backgroundColor: 'rgba(255, 255, 255, 0)',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                margin: '0 auto',
+                            },
+                            content:{
+                                backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                                borderRadius: '20px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                border: 'none'
+                            }
+                        }}
+                    >
+                        <EducationComponent Close={ChangeEducation} />
+                    </Modal>
+                    <S.Img onClick ={()=>{ChangeGrowth()}} src={Growth} alt='Crescimento Econômico'/>
+                    <Modal 
+                        isOpen={pagegrowth} 
+                        onRequestClose={ChangeGrowth}
+                        style={{
+                            overlay:{
+                                backgroundColor: 'rgba(255, 255, 255, 0)',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                margin: '0 auto'
+                            },
+                            content:{
+                                backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                                borderRadius: '20px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                border: 'none'
+                            }
+                        }}
+                    >
+                        <GrowthComponent Close={ChangeGrowth}/>
+                    </Modal>
+                    <S.Img onClick={()=>{ChangeHealth()}} src={Health} alt='Saúde'/>
+                    <Modal 
+                        isOpen={pagehealth} 
+                        onRequestClose={ChangeHealth}
+                        style={{
+                            overlay:{
+                                backgroundColor: 'rgba(255, 255, 255, 0)',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                margin: '0 auto'
+                            },
+                            content:{
+                                backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                                borderRadius: '20px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                border: 'none'
+                            }
+                        }}
+                    >
+                        <HealthComponent Close={ChangeHealth} />
+                    </Modal>
+                    
+                </S.Mural>
+                <S.ContainerFooter>
+                <Footer /> 
+                </S.ContainerFooter>
+            </S.All>
+        </S.ContainerObs> 
+    )
+}
